@@ -94,6 +94,15 @@ header {
   white-space: nowrap;
 }
 
+.note-context-dates,
+.note-date-created {
+  font-style: italic;
+}
+
+.note-name {
+  font-weight: 600;
+}
+
 .note-toolbar {
   display: flex;
   justify-content: space-around;
