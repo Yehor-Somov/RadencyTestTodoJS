@@ -9,3 +9,114 @@
 html {
   font-family: sans-serif;
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+}
+
+.notes-types {
+  background-color: white;
+  color: #287ecf;
+  height: 40px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0 10px;
+  text-align: center;
+  outline: none;
+}
+
+.notes-types:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.add-note-button {
+  height: 40px;
+  background-color: white;
+  color: #287ecf;
+  padding: 10px 40px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.add-note-button:hover {
+  background-color: #287ecf;
+  color: white;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 6fr 2fr;
+  gap: 20px;
+}
+
+.notes-header {
+  background-color: #287ecf;
+  color: white;
+  font-weight: 600;
+  height: 40px;
+  padding: 5px 10px;
+  display: grid;
+  grid-template-columns: 0.4fr repeat(3, 1.5fr) 4fr 2fr 1.3fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px; */
+}
+
+.note {
+  min-height: 50px;
+  /* background: rgb(115, 191, 241); */
+  padding: 5px 10px;
+  display: grid;
+  grid-template-columns: 0.4fr repeat(3, 1.5fr) 4fr 2fr 1.3fr;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.note:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.note-toolbar {
+  display: flex;
+  justify-content: space-around;
+  font-size: 24px;
+}
+
+.note-btn:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+i {
+  pointer-events: none;
+}
+
+[data-option="active"] .note:not([data-state="active"]),
+[data-option="archive"] .note:not([data-state="archived"]) {
+  display: none;
+}
+
+.note[data-state="archived"] {
+  background-color: rgb(211, 211, 211);
+  text-decoration: line-through;
+}
+
+[data-state="active"] .unarchive-button,
+[data-state="archived"] .archive-button,
+[data-state="archived"] .edit-button {
+  display: none;
+}

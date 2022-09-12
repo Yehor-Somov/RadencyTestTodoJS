@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/style.css" />
     <script
       src="https://kit.fontawesome.com/f107de4076.js"
       crossorigin="anonymous"
@@ -12,6 +12,105 @@
     <title>Test Task Radency</title>
   </head>
   <body>
+    <header>
+      <h1>My Tasks</h1>
+
+      <div class="tools">
+        <select class="notes-types">
+          <option value="active">Active notes</option>
+          <option value="archive">Archive notes</option>
+        </select>
+
+        <button class="add-note-button">Add note</button>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="notes-container">
+        <div class="notes-header">
+          <div class="note-icon"></div>
+          <p class="header-name">Name</p>
+          <p class="header-date-created">Created</p>
+          <p class="header-category">Category</p>
+          <p class="header-content">Content</p>
+          <p class="header-context-dates">Dates</p>
+          <p class="header-context-dates">Tools</p>
+        </div>
+        <div class="notes-list" data-option="active">
+          <div class="note" data-state="active">
+            <div class="note-icon">
+              <i class="fa-solid fa-thumbtack fa-2xl"></i>
+            </div>
+            <p class="note-name">Shoping</p>
+            <p class="note-date-created">September 22, 2022</p>
+            <p class="note-category">Random Thought</p>
+            <p class="note-content">Bla bla bla</p>
+            <p class="note-context-dates"></p>
+            <div class="note-toolbar">
+              <div class="edit-button note-btn" data-action="edit">
+                <i class="fa-solid fa-pen"></i>
+              </div>
+              <div class="archive-button note-btn" data-action="archive">
+                <i class="fa-solid fa-box-archive"></i>
+              </div>
+              <div class="delete-button note-btn" data-action="edit">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
+          </div>
+          <div class="note" data-state="archived">
+            <div class="note-icon">
+              <i class="fa-solid fa-thumbtack fa-2xl"></i>
+            </div>
+            <p class="note-name">Shoping 2</p>
+            <p class="note-date-created">April 11, 2022</p>
+            <p class="note-category">Task</p>
+            <p class="note-content">Bla bla bla</p>
+            <p class="note-context-dates"></p>
+            <div class="note-toolbar">
+              <div class="edit-button note-btn">
+                <i class="fa-solid fa-pen"></i>
+              </div>
+              <div class="archive-button note-btn">
+                <i class="fa-solid fa-box-archive"></i>
+              </div>
+              <div class="unarchive-button note-btn">
+                <i class="fa-solid fa-box-open"></i>
+              </div>
+              <div class="delete-button note-btn">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="note" data-state="active">
+            <div class="note-icon">
+              <i class="fa-solid fa-thumbtack fa-2xl"></i>
+            </div>
+            <p class="note-name">Shoping 2</p>
+            <p class="note-date-created">April 11, 2022</p>
+            <p class="note-category">Task</p>
+            <p class="note-content">Bla bla bla</p>
+            <p class="note-context-dates"></p>
+            <div class="note-toolbar">
+              <div class="edit-button note-btn">
+                <i class="fa-solid fa-pen"></i>
+              </div>
+              <div class="archive-button note-btn">
+                <i class="fa-solid fa-box-archive"></i>
+              </div>
+              <div class="unarchive-button note-btn">
+                <i class="fa-solid fa-box-open"></i>
+              </div>
+              <div class="delete-button note-btn">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="scripts/script.js"></script>
     <script src="scripts/layout.js"></script>
   </body>
