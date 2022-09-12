@@ -24,7 +24,7 @@ function addNote() {
     name: noteNameInput.value,
     created: dateFormatter(new Date()),
     category: categorySelector.value,
-    state: "active",
+    state: "Active",
     content: noteContentInput.value,
     dates: parsingContentDates(noteContentInput.value),
   };
@@ -56,6 +56,19 @@ function actionButtonClick(event) {
       case "edit":
         break;
     }
+  } else if (target.classList.contains("note")) {
+    document.querySelector(".inspector-note-name").innerHTML =
+      notes[target.dataset.listIndex].name;
+    document.querySelector(".inspector-note-date").innerHTML =
+      notes[target.dataset.listIndex].created;
+    document.querySelector(".inspector-note-category").innerHTML =
+      notes[target.dataset.listIndex].category;
+    document.querySelector(".inspector-note-content").innerHTML =
+      notes[target.dataset.listIndex].content;
+    document.querySelector(".inspector-note-type").innerHTML =
+      notes[target.dataset.listIndex].state;
+
+    document.querySelector(".notes-inspector").dataset.info = "note";
   }
 }
 

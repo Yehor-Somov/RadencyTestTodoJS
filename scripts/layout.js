@@ -2,6 +2,7 @@ const modalWindow = document.querySelector(".modal");
 const addNoteButton = document.querySelector(".add-note-button");
 const closeModalButton = document.querySelector(".close-modal-button");
 const noteContentInput = document.querySelector(".input-content");
+const closeInspectorButton = document.querySelector(".close-inspector-button");
 
 function updateNotesList(notes) {
   const notesList = document.querySelector(".notes-list");
@@ -9,17 +10,17 @@ function updateNotesList(notes) {
   notes.forEach((note, index) => {
     let noteElement = document.createElement("div");
     noteElement.classList.add("note");
-    noteElement.dataset.state = note.state;
+    noteElement.dataset.state = note.state.toLowerCase();
     noteElement.dataset.listIndex = index;
 
     noteElement.innerHTML = `<div class="note-icon">
                                     <i class="fa-solid ${note.icon} fa-xl"></i>
                                 </div>
-                                <p class="note-name note-list-info-field">${note.name}</p>
-                                <p class="note-date-created note-list-info-field">${note.created}</p>
-                                <p class="note-category note-list-info-field">${note.category}</p>
-                                <p class="note-content note-list-info-field">${note.content}</p>
-                                <p class="note-context-dates note-list-info-field">${note.dates}</p>
+                                <span class="note-name note-list-info-field">${note.name}</span>
+                                <span class="note-date-created note-list-info-field">${note.created}</span>
+                                <span class="note-category note-list-info-field">${note.category}</span>
+                                <span class="note-content note-list-info-field">${note.content}</span>
+                                <span class="note-context-dates note-list-info-field">${note.dates}</span>
                                 <div class="note-toolbar">
                                     <div class="edit-button note-btn" data-action="edit">
                                         <i class="fa-solid fa-pen"></i>
@@ -54,6 +55,10 @@ noteContentInput.addEventListener("input", (event) => {
   let element = event.target;
   element.style.height = "5px";
   element.style.height = element.scrollHeight + "px";
+});
+
+closeInspectorButton.addEventListener("click", () => {
+  document.querySelector(".notes-inspector").dataset.info = "template";
 });
 
 function openModal() {
