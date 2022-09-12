@@ -71,12 +71,10 @@ header {
 .notes-list {
   display: flex;
   flex-direction: column;
-  /* gap: 10px; */
 }
 
 .note {
   min-height: 50px;
-  /* background: rgb(115, 191, 241); */
   padding: 5px 10px;
   display: grid;
   grid-template-columns: 0.4fr repeat(3, 1.5fr) 4fr 2fr 1.3fr;
