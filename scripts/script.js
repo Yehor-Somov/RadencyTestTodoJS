@@ -10,6 +10,8 @@ function initialize() {
   document
     .querySelector(".create-note-button")
     .addEventListener("click", addNote);
+
+  document.addEventListener("click", actionButtonClick.bind(this));
 }
 
 function addNote() {
@@ -30,6 +32,31 @@ function addNote() {
   notes.push(newNote);
   updateNotesList(notes);
   closeModal();
+}
+
+function actionButtonClick(event) {
+  const target = event.target;
+  if (target.classList.contains("note-btn")) {
+    const action = target.dataset.action;
+    const note = target.closest(".note");
+
+    switch (action) {
+      case "delete":
+        notes.splice(note.dataset.listIndex, 1);
+        updateNotesList(notes);
+        break;
+      case "archive":
+        notes[note.dataset.listIndex].state = "archived";
+        note.dataset.state = "archived";
+        break;
+      case "unarchive":
+        notes[note.dataset.listIndex].state = "active";
+        note.dataset.state = "active";
+        break;
+      case "edit":
+        break;
+    }
+  }
 }
 
 function dateFormatter(date) {

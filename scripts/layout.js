@@ -1,6 +1,7 @@
 const modalWindow = document.querySelector(".modal");
 const addNoteButton = document.querySelector(".add-note-button");
 const closeModalButton = document.querySelector(".close-modal-button");
+const noteContentInput = document.querySelector(".input-content");
 
 function updateNotesList(notes) {
   const notesList = document.querySelector(".notes-list");
@@ -48,6 +49,12 @@ addNoteButton.addEventListener("click", () => {
 });
 
 closeModalButton.addEventListener("click", closeModal);
+
+noteContentInput.addEventListener("input", (event) => {
+  let element = event.target;
+  element.style.height = "5px";
+  element.style.height = element.scrollHeight + "px";
+});
 
 function openModal() {
   modalWindow.classList.add("modal-active");
