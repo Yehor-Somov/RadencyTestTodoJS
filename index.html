@@ -40,6 +40,41 @@
       </div>
     </div>
 
+    <div class="modal">
+      <div class="modal-content" data-modal-type="new-note">
+        <div class="modal-header">
+          <p><b>Add/Edit Note</b></p>
+          <div class="close-modal-button">
+            <i class="fa-solid fa-xmark fa-xl"></i>
+          </div>
+        </div>
+        <select class="input-category">
+          <option>Task</option>
+          <option>Random Thought</option>
+          <option>Idea</option>
+        </select>
+        <input type="text" placeholder="Enter name" class="input-note-name" />
+        <textarea
+          rows="1"
+          placeholder="Note..."
+          class="input-content"
+        ></textarea>
+
+        <input
+          type="button"
+          value="Create note"
+          class="create-note-button modal-button"
+          data-event="add-note"
+        />
+        <input
+          type="button"
+          value="Edit note"
+          class="edit-note-button modal-button"
+          data-event="edit-note"
+        />
+      </div>
+    </div>
+
     <script type="module" src="scripts/script.js"></script>
     <script src="scripts/layout.js"></script>
   </body>
