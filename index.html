@@ -4,7 +4,123 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script
+      src="https://kit.fontawesome.com/f107de4076.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Test Task Radency</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>My Tasks</h1>
+
+      <div class="tools">
+        <select class="notes-types">
+          <option value="active">Active notes</option>
+          <option value="archive">Archive notes</option>
+        </select>
+
+        <button class="add-note-button">Add note</button>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="notes-container">
+        <div class="notes-header">
+          <div class="note-icon"></div>
+          <span class="header-name">Name</span>
+          <span class="header-date-created">Created</span>
+          <span class="header-category">Category</span>
+          <span class="header-content">Content</span>
+          <span class="header-context-dates">Dates</span>
+          <span class="header-context-dates">Tools</span>
+        </div>
+        <div class="notes-list" data-option="active"></div>
+
+        <div class="summary-table">
+          <h2 style="padding: 20px">Summary Table</h2>
+          <div class="summary-header">
+            <div class="summary-icon"></div>
+            <span class="summary-category">Note Category</span>
+            <span class="summary-active">Active</span>
+            <span class="summary-archided">Archived</span>
+          </div>
+          <div class="summary-list"></div>
+        </div>
+      </div>
+      <div class="notes-inspector" data-info="template">
+        <div class="notes-info">
+          <div class="inspector-header">
+            <div class="inspector-header-info">
+              <h2 class="inspector-note-name">Shoping</h2>
+              <div class="inspector-main-info">
+                <span class="inspector-note-category">Task</span>
+                <span>&diams;</span>
+                <span class="inspector-note-date">May 9, 2022</span>
+              </div>
+            </div>
+            <div class="close-inspector-button">
+              <i class="fa-solid fa-xmark fa-xl"></i>
+            </div>
+          </div>
+
+          <div class="inspector-main-section">
+            <div>
+              <p class="inspector-prop">Content</p>
+              <br />
+              <p class="inspector-note-content">Tomatoes, potatoes, cheese</p>
+            </div>
+            <div>
+              <p class="inspector-prop">Type</p>
+              <br />
+              <p class="inspector-note-type">Active</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="template-info">
+          <h2>Click on task for details</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal">
+      <div class="modal-content" data-modal-type="new-note">
+        <div class="modal-header">
+          <p><b>Add/Edit Note</b></p>
+          <div class="close-modal-button">
+            <i class="fa-solid fa-xmark fa-xl"></i>
+          </div>
+        </div>
+        <select class="input-category">
+          <option>Task</option>
+          <option>Random Thought</option>
+          <option>Idea</option>
+        </select>
+        <input type="text" placeholder="Enter name" class="input-note-name" />
+        <textarea
+          rows="1"
+          placeholder="Note..."
+          class="input-content"
+        ></textarea>
+
+        <input
+          type="button"
+          value="Create note"
+          class="create-note-button modal-button"
+          data-event="add-note"
+        />
+        <input
+          type="button"
+          value="Edit note"
+          class="edit-note-button modal-button"
+          data-event="edit-note"
+        />
+      </div>
+    </div>
+
+    <script type="module" src="scripts/script.js"></script>
+    <script src="scripts/layout.js"></script>
+  </body>
 </html>
