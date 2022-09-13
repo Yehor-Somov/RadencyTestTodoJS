@@ -6,6 +6,7 @@ window.onload = () => {
 
 function initialize() {
   updateNotesList(notes);
+  updateSummary(notes);
 
   document
     .querySelector(".create-note-button")
@@ -46,12 +47,14 @@ function actionButtonClick(event) {
         updateNotesList(notes);
         break;
       case "archive":
-        notes[note.dataset.listIndex].state = "archived";
+        notes[note.dataset.listIndex].state = "Archived";
         note.dataset.state = "archived";
+        updateSummary(notes);
         break;
       case "unarchive":
-        notes[note.dataset.listIndex].state = "active";
+        notes[note.dataset.listIndex].state = "Active";
         note.dataset.state = "active";
+        updateSummary(notes);
         break;
       case "edit":
         break;
@@ -96,11 +99,16 @@ function parsingContentDates(content) {
 }
 
 function getCategoryIcon(category) {
-  if (category === "Task") {
-    return "fa-thumbtack";
-  } else if (category === "Random Thought") {
-    return "fa-brain";
-  } else if (category === "Idea") {
-    return "fa-lightbulb";
-  }
+  //   if (category === "Task") {
+  //     return "fa-thumbtack";
+  //   } else if (category === "Random Thought") {
+  //     return "fa-brain";
+  //   } else if (category === "Idea") {
+  //     return "fa-lightbulb";
+  //   }
+  return categories.filter((item) => item.name === category)[0].icon;
 }
+
+// function test(category) {
+//   return categories.filter((item) => item.name === category)[0].icon
+// }

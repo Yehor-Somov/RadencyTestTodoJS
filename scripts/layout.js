@@ -4,6 +4,21 @@ const closeModalButton = document.querySelector(".close-modal-button");
 const noteContentInput = document.querySelector(".input-content");
 const closeInspectorButton = document.querySelector(".close-inspector-button");
 
+const categories = [
+  {
+    name: "Task",
+    icon: "fa-thumbtack",
+  },
+  {
+    name: "Random Thought",
+    icon: "fa-brain",
+  },
+  {
+    name: "Idea",
+    icon: "fa-lightbulb",
+  },
+];
+
 function updateNotesList(notes) {
   const notesList = document.querySelector(".notes-list");
   notesList.innerHTML = "";
@@ -36,6 +51,41 @@ function updateNotesList(notes) {
                                     </div>
                                 </div>`;
     notesList.append(noteElement);
+  });
+  updateSummary(notes);
+}
+
+function updateSummary(notes) {
+  const summaryList = document.querySelector(".summary-list");
+  summaryList.innerHTML = ``;
+
+  categories.forEach((category) => {
+    let categoryElement = document.createElement("div");
+    categoryElement.classList.add("category");
+
+    categoryElement.innerHTML = `<div class="summary-icon">
+                                    <i class="fa-solid ${
+                                      category.icon
+                                    } fa-xl"></i>
+                                </div>
+                                <span class="summary-category">${
+                                  category.name
+                                }</span>
+                                <span class="summary-active">${
+                                  notes.filter(
+                                    (note) =>
+                                      note.category === category.name &&
+                                      note.state === "Active"
+                                  ).length
+                                }</span>
+                                <span class="summary-archived">${
+                                  notes.filter(
+                                    (note) =>
+                                      note.category === category.name &&
+                                      note.state === "Archived"
+                                  ).length
+                                }</span>`;
+    summaryList.append(categoryElement);
   });
 }
 
