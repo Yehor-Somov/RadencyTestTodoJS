@@ -113,6 +113,7 @@ closeInspectorButton.addEventListener("click", () => {
 
 function openModal() {
   modalWindow.classList.add("modal-active");
+  document.querySelector(".notes-inspector").dataset.info = "template";
 }
 
 function closeModal() {

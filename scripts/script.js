@@ -1,5 +1,7 @@
 import { notes } from "../data/defaultNotes.js";
 
+let editableNoteIndex = null;
+
 window.onload = () => {
   initialize();
 };
@@ -11,6 +13,10 @@ function initialize() {
   document
     .querySelector(".create-note-button")
     .addEventListener("click", addNote);
+
+  document
+    .querySelector(".edit-note-button")
+    .addEventListener("click", editNote);
 
   document.addEventListener("click", actionButtonClick.bind(this));
 }
@@ -57,6 +63,7 @@ function actionButtonClick(event) {
         updateSummary(notes);
         break;
       case "edit":
+        editNoteModal(note.dataset.listIndex);
         break;
     }
   } else if (target.classList.contains("note")) {
@@ -99,16 +106,29 @@ function parsingContentDates(content) {
 }
 
 function getCategoryIcon(category) {
-  //   if (category === "Task") {
-  //     return "fa-thumbtack";
-  //   } else if (category === "Random Thought") {
-  //     return "fa-brain";
-  //   } else if (category === "Idea") {
-  //     return "fa-lightbulb";
-  //   }
   return categories.filter((item) => item.name === category)[0].icon;
 }
 
-// function test(category) {
-//   return categories.filter((item) => item.name === category)[0].icon
-// }
+function editNoteModal(index) {
+  document.querySelector(".input-category").value = notes[index].category;
+  document.querySelector(".input-content").value = notes[index].content;
+  document.querySelector(".input-note-name").value = notes[index].name;
+  document.querySelector(".modal-content").dataset.modalType = "edit-note";
+
+  editableNoteIndex = index;
+  openModal();
+}
+
+function editNote() {
+  const categorySelector = document.querySelector(".input-category");
+  const noteNameInput = document.querySelector(".input-note-name");
+  const noteContentInput = document.querySelector(".input-content");
+
+  notes[editableNoteIndex].category = categorySelector.value;
+  notes[editableNoteIndex].name = noteNameInput.value;
+  notes[editableNoteIndex].content = noteContentInput.value;
+  notes[editableNoteIndex].dates = parsingContentDates(noteContentInput.value);
+
+  updateNotesList(notes);
+  closeModal();
+}
