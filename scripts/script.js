@@ -130,11 +130,19 @@ function editNote() {
   const noteNameInput = document.querySelector(".input-note-name");
   const noteContentInput = document.querySelector(".input-content");
 
-  notes[editableNoteIndex].category = categorySelector.value;
-  notes[editableNoteIndex].name = noteNameInput.value;
-  notes[editableNoteIndex].content = noteContentInput.value;
-  notes[editableNoteIndex].dates = parsingContentDates(noteContentInput.value);
+  if (noteNameInput.value && noteContentInput.value) {
+    notes[editableNoteIndex].category = categorySelector.value;
+    notes[editableNoteIndex].name = noteNameInput.value;
+    notes[editableNoteIndex].content = noteContentInput.value;
+    notes[editableNoteIndex].dates = parsingContentDates(
+      noteContentInput.value
+    );
 
-  updateNotesList(notes);
-  closeModal();
+    updateNotesList(notes);
+    closeModal();
+  } else {
+    const errorLabel = document.querySelector(".error-label");
+    errorLabel.style.display = "block";
+    errorLabel.innerHTML = "Note can't be with empty values";
+  }
 }
