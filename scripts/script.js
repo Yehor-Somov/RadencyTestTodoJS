@@ -26,19 +26,25 @@ function addNote() {
   const noteNameInput = document.querySelector(".input-note-name");
   const noteContentInput = document.querySelector(".input-content");
 
-  let newNote = {
-    icon: getCategoryIcon(categorySelector.value),
-    name: noteNameInput.value,
-    created: dateFormatter(new Date()),
-    category: categorySelector.value,
-    state: "Active",
-    content: noteContentInput.value,
-    dates: parsingContentDates(noteContentInput.value),
-  };
+  if (noteNameInput.value && noteContentInput.value) {
+    let newNote = {
+      icon: getCategoryIcon(categorySelector.value),
+      name: noteNameInput.value,
+      created: dateFormatter(new Date()),
+      category: categorySelector.value,
+      state: "Active",
+      content: noteContentInput.value,
+      dates: parsingContentDates(noteContentInput.value),
+    };
 
-  notes.push(newNote);
-  updateNotesList(notes);
-  closeModal();
+    notes.push(newNote);
+    updateNotesList(notes);
+    closeModal();
+  } else {
+    const errorLabel = document.querySelector(".error-label");
+    errorLabel.style.display = "block";
+    errorLabel.innerHTML = "Note can't be with empty values";
+  }
 }
 
 function actionButtonClick(event) {
@@ -101,7 +107,7 @@ function dateFormatter(date) {
 }
 
 function parsingContentDates(content) {
-  const datesArray = content.match(/\d{2}([\/.-])\d{2}\1\d{4}/g);
+  const datesArray = content.match(/\d{1,2}([\/.-])\d{1,2}\1\d{2,4}/g);
   return datesArray !== null ? datesArray : "";
 }
 
@@ -124,11 +130,19 @@ function editNote() {
   const noteNameInput = document.querySelector(".input-note-name");
   const noteContentInput = document.querySelector(".input-content");
 
-  notes[editableNoteIndex].category = categorySelector.value;
-  notes[editableNoteIndex].name = noteNameInput.value;
-  notes[editableNoteIndex].content = noteContentInput.value;
-  notes[editableNoteIndex].dates = parsingContentDates(noteContentInput.value);
+  if (noteNameInput.value && noteContentInput.value) {
+    notes[editableNoteIndex].category = categorySelector.value;
+    notes[editableNoteIndex].name = noteNameInput.value;
+    notes[editableNoteIndex].content = noteContentInput.value;
+    notes[editableNoteIndex].dates = parsingContentDates(
+      noteContentInput.value
+    );
 
-  updateNotesList(notes);
-  closeModal();
+    updateNotesList(notes);
+    closeModal();
+  } else {
+    const errorLabel = document.querySelector(".error-label");
+    errorLabel.style.display = "block";
+    errorLabel.innerHTML = "Note can't be with empty values";
+  }
 }

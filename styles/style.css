@@ -191,6 +191,14 @@ i {
   color: black;
 }
 
+.error-label {
+  display: none;
+  color: #fe394e;
+  font-style: italic;
+  align-self: center;
+  font-weight: 600;
+}
+
 .input-note-name {
   font-size: 25px;
 }

@@ -111,6 +111,13 @@ closeInspectorButton.addEventListener("click", () => {
   document.querySelector(".notes-inspector").dataset.info = "template";
 });
 
+document.querySelectorAll(".notes-values").forEach((input) => {
+  input.addEventListener("input", () => {
+    const errorLabel = document.querySelector(".error-label");
+    errorLabel.style.display = "none";
+  });
+});
+
 function openModal() {
   modalWindow.classList.add("modal-active");
   document.querySelector(".notes-inspector").dataset.info = "template";
